@@ -36,18 +36,24 @@ app.get("/scrape", function(req, res) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
-    // grab articles
-    $(".c-entry-box--compact__title").each(function(i, element) {
-      // Save an empty result object
-      var result = {};
+   // grab titles and links
+   $(".c-compact-river__entry").each(function(i, element) {
+    // Save an empty result object
+    var result = {};
 
-      // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this)
-        .children("a")
-        .text();
-      result.link = $(this)
-        .children("a")
-        .attr("href");
+    // Add the text and href of every link, and save them as properties of the result object
+    result.title = $(this)
+      .find(".c-entry-box--compact__title")
+      .text();
+      console.log(this + "This is the result.title")
+    result.link = $(this)
+      .find(".c-entry-box--compact__title")
+      .find("a")
+      .attr("href");
+  
+      result.summary = $(this)
+      .find(".c-entry-box--compact__dek")
+      .text() || " ";
 
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
