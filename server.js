@@ -36,8 +36,8 @@ app.get("/scrape", function(req, res) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
-    // Now, we grab every h2 within an article tag, and do the following:
-    $(".c-entry-box--compact__title).each(function(i, element) {
+    // grab articles
+    $(".c-entry-box--compact__title").each(function(i, element) {
       // Save an empty result object
       var result = {};
 
