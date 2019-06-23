@@ -1,1 +1,1 @@
-# Buffalo-Bills-News
+# The Charging Buffalo
