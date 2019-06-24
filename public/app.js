@@ -3,7 +3,7 @@ $.getJSON("/articles", function(data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
-      $("#articles").append("<div class='card'><div class='card-body'><h1 data-id='" + data[i]._id + "'>" + data[i].title + "</h1>" + "<br />" + "<p>" + data[i].summary + "</p>"  + "<br>" + "<a href='" + data[i].link + "'target='_blank''>"  + data[i].link + "</a></div></div>");
+      $("#articles").append("<div class='card'><div class='card-body' data-id='" + data[i]._id + "'>" + "<h1>" + data[i].title + "</h1>" + "<br />" + "<p>" + data[i].summary + "</p>"  + "<br>" + "<a href='" + data[i].link + "'target='_blank''>"  + data[i].link + "</a></div></div>");
     }
   });
   
@@ -14,7 +14,7 @@ $.getJSON("/articles", function(data) {
     $("#notes").empty();
     // Save the id from the p tag
     var thisId = $(this).attr("data-id");
-  
+  console.log(thisId + "was clicked")
     // Now make an ajax call for the Article
     $.ajax({
       method: "GET",
@@ -26,9 +26,9 @@ $.getJSON("/articles", function(data) {
         // The title of the article
         $("#notes").append("<h2>" + data.title + "</h2>");
         // An input to enter a new title
-        $("#notes").append("<input id='titleinput' name='title' >");
+        $("#notes").append("<input id='titleinput' placeholder='subject' name='title' >");
         // A textarea to add a new note body
-        $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+        $("#notes").append("<textarea id='bodyinput' placeholder='body' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
         $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
   
@@ -38,6 +38,9 @@ $.getJSON("/articles", function(data) {
           $("#titleinput").val(data.note.title);
           // Place the body of the note in the body textarea
           $("#bodyinput").val(data.note.body);
+        }
+        else {
+            console.log("the note didn't work");
         }
       });
   });

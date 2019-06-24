@@ -18,11 +18,7 @@
         overflow: auto;
         width: 60%;
         height: 700px;
-        margin: -15%;
-      }
-      #notes {
-        float: right;
-        width: 30%;
+        margin: 0% 1%;
       }
       textarea, input {
         display: block;
@@ -49,23 +45,47 @@
       .card-body:hover{
         background-color:#164d82;
       }
+      button.feed-btn {
+    margin-right: 20%;
+    float: right;
+}
+
+.bills-backer{
+  background-image: url("jumbo.jpg");
+  background-position-x:5%;
+  background-position-y:55%;
+}
+
+#notes {
+    float: right;
+    margin-right: 9%;
+    margin-top: -45%;
+    width: 30%;
+}
     </style>
   </head>
   <body>
-    <div id="wrapper">
-      <h1 class="title">Note Scraper</h1>
-      <h2 class="title"><i>If you can do this...the homework should be no problem.</i></h2>
+      <div class="jumbotron jumbotron-fluid bills-backer">
+          <div class="container">
+            <h1 class="title">The Charging Buffalo</h1>
+            <p class="title">Get the latest Bills news and info</p>
+          </div>
+        </div>
+    <!-- <div id="wrapper">
+      <h1 class="title">The Charging Buffalo</h1>
+      <h2 class="title"><i></i></h2>
+      <button class="feed-btn" href="/scrape">Update feed</button> -->
       <div id="articles"></div>
       <div id="notes"></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  
-    
+
     <script src="app.js"></script>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
