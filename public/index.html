@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Scraping With Mongoose</title>
+    <title>The Charging Buffalo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
     <style>
@@ -29,19 +29,19 @@
         height: 36px;
         font-size: 24px;
       }
+
       textarea {
         height: 200px;
         font-size: 18px;
       }
-      h1{
-        color:#be2026;
-      }
-      h2{
-        color:#be2026;
-      }
       .title{
-        margin-left:50%;
-      }
+        margin-left:55%;
+        color:white;
+        text-shadow: 5px 4px 8px #111;
+}
+.scrape-btn {
+  margin-left:70%;
+}
       .card-body:hover{
         background-color:#164d82;
       }
@@ -54,6 +54,12 @@
   background-image: url("jumbo.jpg");
   background-position-x:5%;
   background-position-y:55%;
+  box-shadow: 5px 4px 8px #111;
+}
+
+
+.card {
+  color:#be2026;
 }
 
 #notes {
@@ -61,14 +67,19 @@
     margin-right: 9%;
     margin-top: -45%;
     width: 30%;
+    background-color:white;
+    color:#be2026;
+    margin: 4%;
+    box-shadow: 5px 4px 8px #111;
 }
     </style>
   </head>
   <body>
       <div class="jumbotron jumbotron-fluid bills-backer">
           <div class="container">
-            <h1 class="title">The Charging Buffalo</h1>
-            <p class="title">Get the latest Bills news and info</p>
+            <h1 class="title" style="font-size:46px">The Charging Buffalo</h1>
+            <p class="title" style="font-size:28px">Get the latest Bills news and info</p>
+            <button class="btn-primary scrape-btn" href="/scrape">Get News</button>
           </div>
         </div>
     <!-- <div id="wrapper">
