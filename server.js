@@ -5,14 +5,16 @@ var mongoose = require("mongoose");
 // add libraries
 var axios = require("axios");
 var cheerio = require("cheerio");
+var btoa = require("btoa");
 
 // Require all models
 var db = require("./models");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
+
 
 // Configure middleware
 
@@ -31,15 +33,18 @@ mongoose.connect("mongodb://localhost/chargingbuffalodb", { useNewUrlParser: tru
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
+  
   // First, we grab the body of the html with axios
   axios.get("https://www.buffalorumblings.com/buffalo-bills-news").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
+    
 
    // grab titles and links
    $(".c-compact-river__entry").each(function(i, element) {
     // Save an empty result object
     var result = {};
+
 
     // Add the text and href of every link, and save them as properties of the result object
     result.title = $(this)
@@ -54,6 +59,23 @@ app.get("/scrape", function(req, res) {
       result.summary = $(this)
       .find(".c-entry-box--compact__dek")
       .text() || " ";
+      
+    // result.imgURL = $(this)
+    //   .find(".c-dynamic-image")
+    //   .attr("src")
+    
+    //   || " ";
+    // result.imgURL = $(this)
+    //   .find("c-entry-box--compact__image")
+    //   .find("noscript")
+    //   .attr("src")
+    
+      // || " ";
+
+
+      
+      // result.imgURL = btoa(imgURL)
+      
 
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
@@ -71,6 +93,11 @@ app.get("/scrape", function(req, res) {
     res.send("Scrape Complete");
   });
 });
+
+app.get("/", function(req, res) {
+  res.json(path.join(__dirname, "public/index.html"));
+});
+
 
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
@@ -123,6 +150,8 @@ app.post("/articles/:id", function(req, res) {
 });
 
 // Start the server
+
+
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
 });
